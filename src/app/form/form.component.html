@@ -1,0 +1,131 @@
+<h3>Billing Address</h3>
+<form action="#">
+    <div class="row">
+        <div class="col-6 mb-4">
+            <label for="firstName">First name</label>
+            <input required minlength="4" name="firstName" [(ngModel)]="firstName" #firstName="ngModel" type="text" class="form-control" id="firstName"
+                required placeholder="First Name" value="">
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+                <div class="alert alert-danger" *ngIf="firstName.error.required">First Name is required</div>
+                <div class="alert alert-danger" *ngIf="firstName.error.minlength">First Name must be at least 4 characters</div>
+            </div>
+            <!-- <div class="alert alert-danger" *ngIf="
+                                  firstName.invalid &&
+                                  (firstName.dirty || firstName.touched)">
+                <div *ngIf="firstName.error.required">
+                    First Name is required
+                </div>
+                <div *ngIf="firstName.error.minlength">
+                    First Name must be at least 4 characters
+                </div>
+            </div> -->
+        </div>
+        <div class="col-6">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" placeholder="Last Name">
+        </div>
+    </div>
+    <div class="mb-4">
+        <label for="username">Username</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username">
+        </div>
+    </div>
+    <div class="mb-4">
+        <label for="email">Email <span class="text-muted">(Optional)</span></label>
+        <input type="email" class="form-control" placeholder="you@example.com">
+    </div>
+    <div class="mb-4">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" placeholder="1234 Main St">
+    </div>
+    <div class="mb-4">
+        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+        <input type="text" class="form-control" placeholder="Apartment or suite">
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <label for="country">Country</label>
+            <select class="custom-select">
+                <option value="">Choose...</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+            </select>
+        </div>
+        <div class="col-4 mb-4">
+            <label for="state">State</label>
+            <select class="custom-select">
+                <option value="">Choose...</option>
+                <option>California</option>
+                <option>New York</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" placeholder="8056">
+        </div>
+    </div>
+    <div class="mb-4">
+        <hr>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address">
+        <label class="custom-control-label" for="same-address">Shipping address is the same as
+            my billing address</label>
+    </div>
+    <div class="mb-4">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="save-info">
+            <label class="custom-control-label" for="save-info">Save this information for next
+                time</label>
+        </div>
+    </div>
+    <div class="mb-4">
+        <hr>
+    </div>
+    <div class="mb-4">
+        <h4>Payment</h4>
+    </div>
+    <div class="mb-4">
+        <div class="custom-control custom-radio">
+            <input id="credit" type="radio" class="custom-control-input" checked="">
+            <label class="custom-control-label" for="credit">Credit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="debit" type="radio" class="custom-control-input">
+            <label class="custom-control-label" for="debit">Debit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input id="paypal" type="radio" class="custom-control-input">
+            <label class="custom-control-label" for="paypal">PayPal</label>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-6">
+            <label>Name on card</label>
+            <input type="text" class="form-control" placeholder="Name">
+            <p class="text-muted">Full name as displayed on card</p>
+        </div>
+        <div class="col-6">
+            <label>Credit card number</label>
+            <input type="text" class="form-control" placeholder="Number">
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-3">
+            <label>Expiration</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-3">
+            <label>CVV</label>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="mb-4">
+        <hr>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+</form>
