@@ -1,11 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { FormComponent } from './form/form.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { BillComponent } from './bill/bill.component';
+import { FormsModule } from "@angular/forms";
+
+import { AppComponent } from "./app.component";
+import { FormComponent } from "./form/form.component";
+import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
+import { BillComponent } from "./bill/bill.component";
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,11 @@ import { BillComponent } from './bill/bill.component';
     FormComponent,
     HeaderComponent,
     FooterComponent,
-    BillComponent
+    BillComponent,
+    TableComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

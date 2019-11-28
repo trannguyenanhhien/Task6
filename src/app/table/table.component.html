@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataList;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{data.firstName}} {{data.lastName}}</td>
+                    <td>{{data.userName}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.address}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success mr-1" (click)="editData(i)">Edit</button>
+                        <button type="button" class="btn btn-danger ml-1" (click)="removeData(i)">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

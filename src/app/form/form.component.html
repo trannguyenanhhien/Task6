@@ -1,28 +1,26 @@
 <h3>Billing Address</h3>
-<form action="#">
+<form name="form" #myForm="ngForm" (submit)="onSubmit(myForm)" novalidate>
     <div class="row">
         <div class="col-6 mb-4">
             <label for="firstName">First name</label>
-            <input required minlength="4" name="firstName" [(ngModel)]="firstName" #firstName="ngModel" type="text" class="form-control" id="firstName"
-                required placeholder="First Name" value="">
-            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
-                <div class="alert alert-danger" *ngIf="firstName.error.required">First Name is required</div>
-                <div class="alert alert-danger" *ngIf="firstName.error.minlength">First Name must be at least 4 characters</div>
+            <input name="firstName" type="text" class="form-control" id="firstName" required minlength="4"
+                [(ngModel)]="dataForm.firstName" #firstName="ngModel" placeholder="First Name">
+            <div class="text-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                <div *ngIf="firstName?.errors.required">First Name is required</div>
+                <div *ngIf="firstName?.errors.minlength">First Name must be at least 4
+                    characters</div>
             </div>
-            <!-- <div class="alert alert-danger" *ngIf="
-                                  firstName.invalid &&
-                                  (firstName.dirty || firstName.touched)">
-                <div *ngIf="firstName.error.required">
-                    First Name is required
-                </div>
-                <div *ngIf="firstName.error.minlength">
-                    First Name must be at least 4 characters
-                </div>
-            </div> -->
         </div>
         <div class="col-6">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" placeholder="Last Name">
+            <input name="lastName" type="text" class="form-control" placeholder="Last Name"
+                [(ngModel)]="dataForm.lastName" #lastName="ngModel" required minlength="4">
+            <div class="text-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                <div *ngIf="lastName?.errors.required">Last Name is required</div>
+                <div *ngIf="lastName?.errors.minlength">Last Name must be at least 4
+                    characters
+                </div>
+            </div>
         </div>
     </div>
     <div class="mb-4">
@@ -31,20 +29,42 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username">
+            <input [(ngModel)]="dataForm.username" #username="ngModel" required minlength="4" name="username"
+                type="text" class="form-control" placeholder="Username">
+        </div>
+        <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div *ngIf="username?.errors.required">Username is required</div>
         </div>
     </div>
     <div class="mb-4">
         <label for="email">Email <span class="text-muted">(Optional)</span></label>
-        <input type="email" class="form-control" placeholder="you@example.com">
+        <input [(ngModel)]="dataForm.email" #email="ngModel" required
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" type="email"
+            class="form-control" placeholder="you@example.com">
+        <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email?.errors.required">Email is required</div>
+            <div *ngIf="email?.errors.pattern">Email is valid</div>
+        </div>
     </div>
     <div class="mb-4">
         <label for="address">Address</label>
-        <input type="text" class="form-control" placeholder="1234 Main St">
+        <input [(ngModel)]="dataForm.address" #address="ngModel" required minlength="4" name="address" type="text"
+            class="form-control" placeholder="1234 Main St">
+        <div class="text-danger" *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address?.errors.required">Address is required</div>
+            <div *ngIf="address?.errors.minlength">Address must be at least 4
+                characters</div>
+        </div>
     </div>
     <div class="mb-4">
         <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-        <input type="text" class="form-control" placeholder="Apartment or suite">
+        <input [(ngModel)]="dataForm.address2" #address2="ngModel" required minlength="4" name="address2" type="text"
+            class="form-control" placeholder="Apartment or suite">
+        <div class="text-danger" *ngIf="address2.invalid && (address2.dirty || address2.touched)">
+            <div *ngIf="address2?.errors.required">Address 2 is required</div>
+            <div *ngIf="address2?.errors.minlength">Address 2 must be at least 4
+                characters</div>
+        </div>
     </div>
     <div class="row">
         <div class="col-5">
@@ -65,7 +85,12 @@
         </div>
         <div class="col-3">
             <label for="zip">Zip</label>
-            <input type="text" class="form-control" placeholder="8056">
+            <input [(ngModel)]="dataForm.zip" #zip="ngModel" required minlength="4" name="zip" type="text" class="form-control" placeholder="8056">
+            <div class="text-danger" *ngIf="zip.invalid && (zip.dirty || zip.touched)">
+                <div *ngIf="zip?.errors.required">Zip is required</div>
+                <div *ngIf="zip?.errors.minlength">Zip must be at least 4
+                    characters</div>
+            </div>
         </div>
     </div>
     <div class="mb-4">
@@ -105,27 +130,44 @@
     </div>
     <div class="row mb-2">
         <div class="col-6">
-            <label>Name on card</label>
-            <input type="text" class="form-control" placeholder="Name">
+            <label for="namecard">Name on card</label>
+            <input [(ngModel)]="dataForm.namecard" #namecard="ngModel" required minlength="4" name="namecard" type="text" class="form-control" placeholder="Name">
             <p class="text-muted">Full name as displayed on card</p>
+            <div class="text-danger" *ngIf="namecard.invalid && (namecard.dirty || namecard.touched)">
+                <div *ngIf="namecard?.errors.required">Name on card is required</div>
+                <div *ngIf="namecard?.errors.minlength">Name on card must be at least 4
+                    characters</div>
+            </div>
         </div>
         <div class="col-6">
-            <label>Credit card number</label>
-            <input type="text" class="form-control" placeholder="Number">
+            <label for="ccnumber">Credit card number</label>
+            <input [(ngModel)]="dataForm.ccnumber" #ccnumber="ngModel" required minlength="4" name="ccnumber" type="text" class="form-control" placeholder="Number">
+            <div class="text-danger" *ngIf="ccnumber.invalid && (ccnumber.dirty || ccnumber.touched)">
+                <div *ngIf="ccnumber?.errors.required">Credit card number is required</div>
+                <div *ngIf="ccnumber?.errors.minlength">Credit card number must be at least 4
+                    characters</div>
+            </div>
         </div>
     </div>
     <div class="row mb-5">
         <div class="col-3">
-            <label>Expiration</label>
-            <input type="text" class="form-control">
+            <label for="exp">Expiration</label>
+            <input [(ngModel)]="dataForm.exp" #exp="ngModel" required minlength="4" name="exp" type="text" class="form-control">
+            <div class="text-danger" *ngIf="exp.invalid && (exp.dirty || exp.touched)">
+                <div *ngIf="exp?.errors.required">Expiration is required</div>
+            </div>
         </div>
         <div class="col-3">
-            <label>CVV</label>
-            <input type="text" class="form-control">
+            <label for="cvv">CVV</label>
+            <input [(ngModel)]="dataForm.cvv" #cvv="ngModel" required minlength="4" name="cvv" type="text" class="form-control">
+            <div class="text-danger" *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)">
+                <div *ngIf="cvv?.errors.required">CVV is required</div>
+            </div>
         </div>
     </div>
     <div class="mb-4">
         <hr>
     </div>
+    <app-table (editClick)="passForm(myForm)"></app-table>
     <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 </form>
